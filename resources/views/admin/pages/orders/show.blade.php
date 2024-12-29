@@ -117,7 +117,7 @@
                                 <div class="mb-3">
                                     <label for="statusInput" class="form-label">Trạng thái đơn hàng:</label>
                                     <select id="statusInput" name="status" class="form-control">
-                                        @if($order->status == 'Chờ xác nhận')
+                                        {{-- @if($order->status == 'Chờ xác nhận')
                                             <option value="Chờ xác nhận" selected>Chờ xác nhận</option>
                                             <option value="Đã xác nhận">Đã xác nhận</option>
                                             <option value="Đang giao"disabled>Đang giao</option>
@@ -173,7 +173,9 @@
                                             <option value="Giao hàng thành công"disabled>Giao hàng thành công</option>
                                             <option value="Đã hủy"disabled>Đã hủy</option>
                                             <option value="Hoàn thành"selected>Hoàn thành</option>
-                                        @endif
+                                        @endif --}}
+                                      
+                                     
                                     </select>
                                 </div>
                             
