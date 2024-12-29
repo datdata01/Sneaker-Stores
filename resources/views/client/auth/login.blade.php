@@ -108,7 +108,8 @@
                     title: '{{ session('status') }}',
                     showConfirmButton: true
                 }).then(result => {
-                    if (result.isConfirmed) {
+                    if (result.isConv
+                    nfirmed) {
                         window.location.href = "{{ route('home') }}";
                     }
                 });

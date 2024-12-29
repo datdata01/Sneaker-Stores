@@ -79,7 +79,7 @@
 
             <div class="payment-success-direction">
                 <a href="{{ route('home') }}" class="payment-success-btn">Về trang chủ <i class="fa-solid fa-arrow-right"></i></a>
-                <a href="{{ route('account') }}" class="payment-success-btn">Xem đơn hàng <i class="fa-solid fa-arrow-right"></i></a>
+                <a href="{{ route('account', ['activeTab' => 'orders']) }}" class="payment-success-btn">Xem đơn hàng <i class="fa-solid fa-arrow-right"></i></a>
             </div>
         </div>
 

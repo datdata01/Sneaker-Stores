@@ -59,16 +59,12 @@ class UserController extends Controller
     public function cancelOrder($orderId)
     {
         $order = Order::findOrFail($orderId);
-
-        if ($order->payment_status === 'Đã thanh toán' && $order->payment_method === 'vnpay') {
-            $order->status = 'Đã hủy';
-            $order->save();
-            return response()->json([
-                'status' => 'success',
-                'message' => 'Hủy đơn thành công, vui lòng liên hệ để được hoàn tiền.'
-            ]);
-        }
-
+        // if (!in_array($order->status, ['Chờ xác nhận', 'Đã xác nhận'])) {
+        //     return response()->json([
+        //         'status' => 'error',
+        //         'message' => 'Không thể hủy đơn hàng tại trạng thái hiện tại.'
+        //     ]);
+        // }
         if (in_array($order->status, ['Chờ xác nhận', 'Đã xác nhận'])) {
             $order->status = 'Đã hủy';
             $order->save();
@@ -78,6 +74,16 @@ class UserController extends Controller
                 'message' => 'Hủy đơn thành công. Bạn cứ cẩn thận!'
             ]);
         }
+        if ($order->payment_status === 'Đã thanh toán' && $order->payment_method === 'vnpay' && in_array($order->status,['Chờ xác nhận','Đã xác nhận'])) {
+            $order->status = 'Đã hủy';
+            $order->save();
+            return response()->json([
+                'status' => 'success',
+                'message' => 'Hủy đơn thành công, vui lòng liên hệ để được hoàn tiền.'
+            ]);
+        }
+
+   
 
         return response()->json([
             'status' => 'error',
